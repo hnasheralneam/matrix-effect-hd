@@ -2,6 +2,10 @@ let characterList = "Α, α, Β, β, Γ, γ, Δ, δ, Ε, ε, Ζ, ζ, Η, η, Θ,
 print(characterList);
 
 let columns = 90;
+let rows = 30;
+
+let pageHeight = window.innerHeight;
+rows = Math.floor(pageHeight / 20) + 1;
 
 document.body.style.display = "grid";
 document.body.style.gridTemplateColumns = `repeat(${columns}, 1ch)`;
@@ -15,13 +19,13 @@ for (let i = 0; i < columns; i++) {
    let charOpacity = Math.random();
    let opacityDiff = 0.04;
    let fading = false;
-   for (let j = 0; j < 50; j++) {
+   for (let j = 0; j < rows; j++) {
       if (fading)
          charOpacity -= opacityDiff;
       else
          charOpacity += opacityDiff;
 
-      if (charOpacity < 0)
+      if (charOpacity < -0.1)
          fading = false;
       else if (charOpacity > 1)
          fading = true;
@@ -35,25 +39,22 @@ for (let i = 0; i < columns; i++) {
       //    let changeChar = setInterval(() => {
       //       charElement.textContent = randomCharacter();
       //    }, 2500);
-      // }, Math.random() * 100);
+      // }, Math.random() * 1000);
    }
 
-   // move last character to the top
-   // let movementSpeed = Math.random() * 100;
-   // let moveDown = setInterval(() => {
-   //   moveCharToTop();
-   // }, movementSpeed);
-   // translate column down
-   let movementSpeed = Math.random() * 2000;
+
+   // Movement
+   let transitionSpeed = 400;
+   let movementSpeed = Math.random() * 1000 // + transitionSpeed;
    let moveDown = setInterval(() => {
-      columnElement.style.transition = `2s`;
-      columnElement.style.transform = `translateY(5ch)`;
+      columnElement.style.transition = `transform ${movementSpeed}ms linear`;
+      columnElement.style.transform = `translateY(20px)`;
       setTimeout(() => {
-         columnElement.style.transition = `0`;
-         moveCharToTop();
+         columnElement.style.transition = `0s`;
          columnElement.style.transform = `translateY(0)`;
-      }, 2000);
-   }, movementSpeed);
+         moveCharToTop();
+      }, movementSpeed);
+   }, movementSpeed - 20);
 
    function moveCharToTop() {
       let lastChar = columnElement.lastChild;
