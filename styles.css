@@ -11,6 +11,35 @@
 
 body {
    overflow: hidden;
+}
+
+.matrix {
+   overflow: hidden;
    background-color: #000;
    /* grid-gap: 10px; // for emojis */
+}
+
+
+.toggle-edit {
+   position: fixed;
+   top: 0;
+   right: 0;
+   padding: 10px;
+   margin: 5px;
+   background-color: #555;
+   border-radius: 10px;}
+
+.edit {
+   position: fixed;
+   top: 45px;
+   right: 0;
+   padding: 10px;
+   margin: 5px;
+   background-color: #555;
+   border-radius: 10px;
+   visibility: hidden;
+}
+
+.slider {
+   margin: 10px 0;
 }
