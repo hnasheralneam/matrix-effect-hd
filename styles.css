@@ -12,4 +12,5 @@
 body {
    overflow: hidden;
    background-color: #000;
+   /* grid-gap: 10px; // for emojis */
 }
